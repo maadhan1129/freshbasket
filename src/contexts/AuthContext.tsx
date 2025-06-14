@@ -1,97 +1,124 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  role: 'user' | 'admin';
-}
+import { createContext, useContext, useState, useCallback, ReactNode, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
+import { User } from '@supabase/supabase-js';
 
 interface AuthContextType {
   user: User | null;
-  isAuthenticated: boolean;
-  isAdmin: boolean;
-  isLoading: boolean;
+  isLoggedIn: boolean;
   login: (email: string, password: string) => Promise<void>;
-  register: (name: string, email: string, password: string) => Promise<void>;
-  logout: () => void;
+  signup: (email: string, password: string) => Promise<void>;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // Check for existing session on mount
   useEffect(() => {
-    // Check for stored user data on mount
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-      } catch (error) {
-        console.error('Failed to parse user data', error);
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        setUser(session.user);
+        setIsLoggedIn(true);
       }
-    }
-    setIsLoading(false);
+    };
+    checkSession();
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setUser(session.user);
+        setIsLoggedIn(true);
+      } else {
+        setUser(null);
+        setIsLoggedIn(false);
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
-  // For demo purposes - in a real app, this would make API calls
-  const login = async (email: string, password: string) => {
-    setIsLoading(true);
-    
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Mock successful login
-    const mockUser = {
-      id: 'user-123',
-      name: 'Demo User',
-      email,
-      role: email.includes('admin') ? 'admin' as const : 'user' as const,
-    };
-    
-    setUser(mockUser);
-    localStorage.setItem('user', JSON.stringify(mockUser));
-    setIsLoading(false);
-  };
+  const signup = useCallback(async (email: string, password: string) => {
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+      });
 
-  const register = async (name: string, email: string, password: string) => {
-    setIsLoading(true);
-    
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Mock successful registration
-    const mockUser = {
-      id: `user-${Date.now()}`,
-      name,
-      email,
-      role: 'user' as const,
-    };
-    
-    setUser(mockUser);
-    localStorage.setItem('user', JSON.stringify(mockUser));
-    setIsLoading(false);
-  };
+      if (error) throw error;
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('user');
+      if (data.user) {
+        // Create a profile entry in the user_profiles table
+        const { error: profileError } = await supabase
+          .from('user_profiles')
+          .insert([
+            {
+              user_id: data.user.id,
+              email: data.user.email,
+              created_at: new Date().toISOString(),
+            },
+          ]);
+
+        if (profileError) throw profileError;
+      }
+
+      return Promise.resolve();
+    } catch (error: any) {
+      console.error('Signup error:', error.message);
+      throw error;
+    }
+  }, []);
+
+  const login = useCallback(async (email: string, password: string) => {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) throw error;
+
+      if (data.user) {
+        setUser(data.user);
+        setIsLoggedIn(true);
+      }
+
+      return Promise.resolve();
+    } catch (error: any) {
+      console.error('Login error:', error.message);
+      throw error;
+    }
+  }, []);
+
+  const logout = useCallback(async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      
+      setUser(null);
+      setIsLoggedIn(false);
+      return Promise.resolve();
+    } catch (error: any) {
+      console.error('Logout error:', error.message);
+      throw error;
+    }
+  }, []);
+
+  const value = {
+    user,
+    isLoggedIn,
+    login,
+    signup,
+    logout,
   };
 
   return (
-    <AuthContext.Provider 
-      value={{ 
-        user, 
-        isAuthenticated: !!user, 
-        isAdmin: user?.role === 'admin', 
-        isLoading,
-        login, 
-        register, 
-        logout 
-      }}
-    >
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
@@ -103,4 +130,4 @@ export const useAuth = () => {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
-};
+}; 

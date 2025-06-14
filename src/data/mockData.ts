@@ -17,7 +17,7 @@ export const categories: { id: Category; name: string; icon: string }[] = [
 export const products: Product[] = [
   // Fruits & Vegetables
   {
-    id: 'fv1',
+    id: '550e8400-e29b-41d4-a716-446655440001',
     name: 'Fresh Apples',
     price: 249,
     category: 'fruits-veggies',
@@ -30,7 +30,7 @@ export const products: Product[] = [
     tags: ['fruits', 'fresh']
   },
   {
-    id: 'fv2',
+    id: '550e8400-e29b-41d4-a716-446655440002',
     name: 'Bananas',
     price: 49,
     category: 'fruits-veggies',
@@ -43,20 +43,20 @@ export const products: Product[] = [
     tags: ['fruits', 'fresh']
   },
   {
-    id: 'fv3',
-    name: 'Tomatoes',
-    price: 39,
-    category: 'fruits-veggies',
-    image: 'https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?auto=compress&w=400&q=80',
-    unit: '1 kg',
-    description: 'Fresh and ripe tomatoes from local farms',
-    stock: 75,
+    id: '0d8b4e1e-2c7b-4d7a-8f6a-0e9b8c7d6f5a',
+    name: 'Green Beans',
+    price: 60,
+    category: 'vegetables',
+    image: 'https://images.pexels.com/photos/14141675/pexels-photo-14141675.jpeg?auto=compress&cs=tinysrgb&w=600',
+    unit: '500g',
+    description: 'Fresh green beans, perfect for stir-fries and side dishes.',
+    stock: 70,
     brand: 'Local Farm',
     rating: 4.2,
-    tags: ['vegetables', 'fresh']
+    tags: ['fresh', 'healthy', 'vegetable']
   },
   {
-    id: 'fv4',
+    id: '550e8400-e29b-41d4-a716-446655440004',
     name: 'Onions',
     price: 29,
     category: 'fruits-veggies',
@@ -69,7 +69,7 @@ export const products: Product[] = [
     tags: ['vegetables', 'fresh']
   },
   {
-    id: 'fv5',
+    id: '550e8400-e29b-41d4-a716-446655440005',
     name: 'Potatoes',
     price: 35,
     category: 'fruits-veggies',
@@ -82,7 +82,7 @@ export const products: Product[] = [
     tags: ['vegetables', 'fresh']
   },
   {
-    id: 'fv6',
+    id: '550e8400-e29b-41d4-a716-446655440006',
     name: 'Mangoes',
     price: 199,
     category: 'fruits-veggies',
@@ -95,7 +95,7 @@ export const products: Product[] = [
     tags: ['fruits', 'seasonal']
   },
   {
-    id: 'fv7',
+    id: '550e8400-e29b-41d4-a716-446655440007',
     name: 'Green Capsicum',
     price: 89,
     category: 'fruits-veggies',
@@ -108,7 +108,7 @@ export const products: Product[] = [
     tags: ['vegetables', 'fresh']
   },
   {
-    id: 'fv8',
+    id: '550e8400-e29b-41d4-a716-446655440008',
     name: 'Carrots',
     price: 45,
     category: 'fruits-veggies',
@@ -123,7 +123,7 @@ export const products: Product[] = [
   
   // Dairy & Bakery
   {
-    id: 'd1',
+    id: '550e8400-e29b-41d4-a716-446655440009',
     name: 'Amul Full Cream Milk',
     price: 58,
     category: 'dairy',
@@ -136,7 +136,7 @@ export const products: Product[] = [
     tags: ['dairy', 'milk']
   },
   {
-    id: 'd2',
+    id: '550e8400-e29b-41d4-a716-446655440010',
     name: 'Fresh Paneer',
     price: 199,
     category: 'dairy',
@@ -149,7 +149,7 @@ export const products: Product[] = [
     tags: ['dairy', 'paneer']
   },
   {
-    id: 'd3',
+    id: '550e8400-e29b-41d4-a716-446655440011',
     name: 'Brown Bread',
     price: 35,
     category: 'dairy',
@@ -162,7 +162,7 @@ export const products: Product[] = [
     tags: ['bakery', 'bread']
   },
   {
-    id: 'd4',
+    id: '550e8400-e29b-41d4-a716-446655440012',
     name: 'Amul Butter',
     price: 55,
     category: 'dairy',
@@ -175,7 +175,7 @@ export const products: Product[] = [
     tags: ['dairy', 'butter']
   },
   {
-    id: 'd5',
+    id: '550e8400-e29b-41d4-a716-446655440013',
     name: 'Heritage Curd',
     price: 45,
     category: 'dairy',
@@ -188,7 +188,7 @@ export const products: Product[] = [
     tags: ['dairy', 'curd']
   },
   {
-    id: 'd6',
+    id: '550e8400-e29b-41d4-a716-446655440014',
     name: 'Amul Vanilla Ice Cream',
     price: 120,
     category: 'dairy',
@@ -201,7 +201,7 @@ export const products: Product[] = [
     tags: ['dairy', 'ice-cream', 'vanilla']
   },
   {
-    id: 'd7',
+    id: '550e8400-e29b-41d4-a716-446655440015',
     name: 'Amul Chocolate Ice Cream',
     price: 160,
     category: 'dairy',
@@ -216,7 +216,7 @@ export const products: Product[] = [
   
   // Grocery & Staples
   {
-    id: 'g1',
+    id: '550e8400-e29b-41d4-a716-446655440016',
     name: 'Premium Basmati Rice',
     price: 149,
     category: 'grocery',
@@ -229,7 +229,7 @@ export const products: Product[] = [
     tags: ['rice', 'staple']
   },
   {
-    id: 'g2',
+    id: '550e8400-e29b-41d4-a716-446655440017',
     name: 'Aashirvaad Atta',
     price: 55,
     category: 'grocery',
@@ -242,7 +242,7 @@ export const products: Product[] = [
     tags: ['atta', 'staple']
   },
   {
-    id: 'g3',
+    id: '550e8400-e29b-41d4-a716-446655440018',
     name: 'Toor Dal',
     price: 159,
     category: 'grocery',
@@ -255,7 +255,7 @@ export const products: Product[] = [
     tags: ['dal', 'pulses']
   },
   {
-    id: 'g4',
+    id: '550e8400-e29b-41d4-a716-446655440019',
     name: 'Chana Dal',
     price: 139,
     category: 'grocery',
@@ -268,7 +268,7 @@ export const products: Product[] = [
     tags: ['dal', 'pulses']
   },
   {
-    id: 'g5',
+    id: '550e8400-e29b-41d4-a716-446655440020',
     name: 'Sugar',
     price: 49,
     category: 'grocery',
@@ -281,7 +281,7 @@ export const products: Product[] = [
     tags: ['sugar', 'staple']
   },
   {
-    id: 'g6',
+    id: '550e8400-e29b-41d4-a716-446655440021',
     name: 'Salt',
     price: 20,
     category: 'grocery',
@@ -296,7 +296,7 @@ export const products: Product[] = [
   
   // Spices & Masalas
   {
-    id: 's1',
+    id: '550e8400-e29b-41d4-a716-446655440022',
     name: 'Turmeric Powder',
     price: 89,
     category: 'spices',
@@ -309,7 +309,7 @@ export const products: Product[] = [
     tags: ['spices', 'masala']
   },
   {
-    id: 's2',
+    id: '550e8400-e29b-41d4-a716-446655440023',
     name: 'Garam Masala',
     price: 99,
     category: 'spices',
@@ -322,7 +322,7 @@ export const products: Product[] = [
     tags: ['spices', 'masala']
   },
   {
-    id: 's3',
+    id: '550e8400-e29b-41d4-a716-446655440024',
     name: 'Red Chilli Powder',
     price: 79,
     category: 'spices',
@@ -335,7 +335,7 @@ export const products: Product[] = [
     tags: ['spices', 'masala']
   },
   {
-    id: 's4',
+    id: '550e8400-e29b-41d4-a716-446655440025',
     name: 'Cumin Seeds',
     price: 129,
     category: 'spices',
@@ -348,7 +348,7 @@ export const products: Product[] = [
     tags: ['spices', 'seeds']
   },
   {
-    id: 's5',
+    id: '550e8400-e29b-41d4-a716-446655440026',
     name: 'Coriander Powder',
     price: 89,
     category: 'spices',
@@ -363,7 +363,7 @@ export const products: Product[] = [
   
   // Snacks & Beverages
   {
-    id: 'sn1',
+    id: '550e8400-e29b-41d4-a716-446655440027',
     name: 'Haldirams Namkeen',
     price: 45,
     category: 'snacks',
@@ -376,7 +376,7 @@ export const products: Product[] = [
     tags: ['snacks', 'namkeen']
   },
   {
-    id: 'sn2',
+    id: '550e8400-e29b-41d4-a716-446655440028',
     name: 'Parle-G Biscuits',
     price: 30,
     category: 'snacks',
@@ -389,7 +389,7 @@ export const products: Product[] = [
     tags: ['snacks', 'biscuits']
   },
   {
-    id: 'sn3',
+    id: '550e8400-e29b-41d4-a716-446655440029',
     name: 'Niloufer Tea',
     price: 55,
     category: 'snacks',
@@ -402,7 +402,7 @@ export const products: Product[] = [
     tags: ['beverages', 'tea']
   },
   {
-    id: 'sn4',
+    id: '550e8400-e29b-41d4-a716-446655440030',
     name: "Lay's Chips",
     price: 20,
     category: 'snacks',
@@ -415,7 +415,7 @@ export const products: Product[] = [
     tags: ['snacks', 'chips']
   },
   {
-    id: 'sn5',
+    id: '550e8400-e29b-41d4-a716-446655440031',
     name: 'Coca Cola',
     price: 35,
     category: 'snacks',
@@ -428,7 +428,7 @@ export const products: Product[] = [
     tags: ['beverages', 'soft-drinks']
   },
   {
-    id: 'sn6',
+    id: '550e8400-e29b-41d4-a716-446655440032',
     name: 'Cadbury Dairy Milk Silk',
     price: 175,
     category: 'sweets-desserts',
@@ -441,7 +441,7 @@ export const products: Product[] = [
     tags: ['sweets-desserts', 'chocolate', 'dairy-milk']
   },
   {
-    id: 'sn7',
+    id: '550e8400-e29b-41d4-a716-446655440033',
     name: 'Cadbury Dairy Milk Fruit & Nut',
     price: 120,
     category: 'sweets-desserts',
@@ -458,7 +458,7 @@ export const products: Product[] = [
   
   // Household Items
   {
-    id: 'h1',
+    id: '550e8400-e29b-41d4-a716-446655440034',
     name: 'Vim Dishwash Bar',
     price: 35,
     category: 'household',
@@ -471,7 +471,7 @@ export const products: Product[] = [
     tags: ['household', 'cleaning']
   },
   {
-    id: 'h2',
+    id: '550e8400-e29b-41d4-a716-446655440035',
     name: 'Surf Excel',
     price: 249,
     category: 'household',
@@ -484,7 +484,7 @@ export const products: Product[] = [
     tags: ['household', 'detergent']
   },
   {
-    id: 'h3',
+    id: '550e8400-e29b-41d4-a716-446655440036',
     name: 'Harpic Toilet Cleaner',
     price: 129,
     category: 'household',
@@ -497,7 +497,7 @@ export const products: Product[] = [
     tags: ['household', 'cleaning']
   },
   {
-    id: 'h4',
+    id: '550e8400-e29b-41d4-a716-446655440037',
     name: 'Scotch Brite Scrubber',
     price: 45,
     category: 'household',
@@ -510,7 +510,7 @@ export const products: Product[] = [
     tags: ['household', 'cleaning']
   },
   {
-    id: 'h5',
+    id: '550e8400-e29b-41d4-a716-446655440038',
     name: 'Good Knight Mosquito Repellent',
     price: 199,
     category: 'household',
@@ -525,7 +525,7 @@ export const products: Product[] = [
 
   // Beauty & Personal Care (New Category)
   {
-    id: 'bpc1',
+    id: '550e8400-e29b-41d4-a716-446655440039',
     name: 'Lakme Eyeconic Kajal',
     price: 250,
     category: 'beauty',
@@ -538,7 +538,7 @@ export const products: Product[] = [
     tags: ['beauty', 'makeup', 'kajal']
   },
   {
-    id: 'bpc2',
+    id: '550e8400-e29b-41d4-a716-446655440040',
     name: 'Maybelline New York Fit Me Foundation',
     price: 600,
     category: 'beauty',
@@ -551,7 +551,7 @@ export const products: Product[] = [
     tags: ['beauty', 'makeup', 'foundation']
   },
   {
-    id: 'bpc3',
+    id: '550e8400-e29b-41d4-a716-446655440041',
     name: 'Bella Vita Perfume',
     price: 5500,
     category: 'beauty',
@@ -564,7 +564,7 @@ export const products: Product[] = [
     tags: ['beauty', 'fragrance', 'perfume']
   },
   {
-    id: 'bpc4',
+    id: '550e8400-e29b-41d4-a716-446655440042',
     name: 'Chanel No. 5 Perfume',
     price: 12000,
     category: 'beauty',
@@ -577,7 +577,7 @@ export const products: Product[] = [
     tags: ['beauty', 'fragrance', 'perfume', 'women']
   },
   {
-    id: 'pc1',
+    id: 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11',
     name: 'Colgate Toothpaste',
     price: 95,
     category: 'beauty',
@@ -590,7 +590,7 @@ export const products: Product[] = [
     tags: ['personal-care', 'toothpaste', 'beauty']
   },
   {
-    id: 'pc2',
+    id: '550e8400-e29b-41d4-a716-446655440043',
     name: 'Dove Shampoo',
     price: 199,
     category: 'beauty',
@@ -603,7 +603,7 @@ export const products: Product[] = [
     tags: ['personal-care', 'shampoo', 'beauty']
   },
   {
-    id: 'pc3',
+    id: '550e8400-e29b-41d4-a716-446655440044',
     name: 'Dettol Soap',
     price: 45,
     category: 'beauty',
@@ -616,7 +616,7 @@ export const products: Product[] = [
     tags: ['personal-care', 'soap', 'beauty']
   },
   {
-    id: 'pc4',
+    id: '550e8400-e29b-41d4-a716-446655440045',
     name: 'Himalaya Face Wash',
     price: 149,
     category: 'beauty',
@@ -629,7 +629,7 @@ export const products: Product[] = [
     tags: ['personal-care', 'face-wash', 'beauty']
   },
   {
-    id: 'pc5',
+    id: '550e8400-e29b-41d4-a716-446655440046',
     name: 'Nivea Cream',
     price: 299,
     category: 'beauty',
@@ -644,7 +644,7 @@ export const products: Product[] = [
 
   // Sweets & Desserts (New Category)
   {
-    id: 'sd1',
+    id: '550e8400-e29b-41d4-a716-446655440047',
     name: 'Cadbury Dairy Milk Silk',
     price: 175,
     category: 'sweets-desserts',
@@ -657,7 +657,7 @@ export const products: Product[] = [
     tags: ['sweets-desserts', 'chocolate', 'dairy-milk']
   },
   {
-    id: 'sd2',
+    id: '550e8400-e29b-41d4-a716-446655440048',
     name: 'Cadbury Dairy Milk Fruit & Nut',
     price: 120,
     category: 'sweets-desserts',
@@ -670,7 +670,7 @@ export const products: Product[] = [
     tags: ['sweets-desserts', 'chocolate', 'dairy-milk', 'fruit-nut']
   },
   {
-    id: 'sd3',
+    id: '550e8400-e29b-41d4-a716-446655440049',
     name: 'Amul Vanilla Ice Cream',
     price: 150,
     category: 'sweets-desserts',
@@ -683,7 +683,7 @@ export const products: Product[] = [
     tags: ['sweets-desserts', 'ice-cream', 'vanilla']
   },
   {
-    id: 'sd4',
+    id: '550e8400-e29b-41d4-a716-446655440050',
     name: 'Amul Chocolate Ice Cream',
     price: 160,
     category: 'sweets-desserts',
@@ -696,7 +696,7 @@ export const products: Product[] = [
     tags: ['sweets-desserts', 'ice-cream', 'chocolate']
   },
   {
-    id: 'sd5',
+    id: '550e8400-e29b-41d4-a716-446655440051',
     name: 'Cadbury Five Star',
     price: 20,
     category: 'sweets-desserts',
@@ -709,7 +709,7 @@ export const products: Product[] = [
     tags: ['sweets-desserts', 'chocolate']
   },
   {
-    id: 'sd6',
+    id: '550e8400-e29b-41d4-a716-446655440052',
     name: 'Amul Strawberry Ice Cream',
     price: 155,
     category: 'sweets-desserts',

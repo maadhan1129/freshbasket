@@ -16,7 +16,7 @@ const Header: React.FC = () => {
   );
   
   const { getItemCount } = useCart();
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isLoggedIn, logout, user } = useAuth();
   const navigate = useNavigate();
 
   const predefinedLocations = ['Mumbai', 'Delhi', 'Bangalore', 'Chennai', 'Kolkata', 'Hyderabad', 'Pune'];
@@ -50,11 +50,6 @@ const Header: React.FC = () => {
     setSelectedLocation(location);
     localStorage.setItem('selectedLocation', location);
     toggleLocationModal();
-  };
-
-  const handleLogout = () => {
-    logout();
-    navigate('/');
   };
 
   return (
@@ -102,7 +97,7 @@ const Header: React.FC = () => {
               </button>
             </div>
           </form>
-          {/* Cart/Login */}
+          {/* Cart/Login/Profile */}
           <div className="flex items-center space-x-6">
             <Link to="/cart" className="relative p-2 group">
               <ShoppingCart className="h-6 w-6 text-gray-700 group-hover:text-yellow-600 transition-colors" />
@@ -112,53 +107,29 @@ const Header: React.FC = () => {
                 </span>
               )}
             </Link>
-            {isAuthenticated ? (
-              <div className="relative group">
-                <button className="flex items-center space-x-2 p-2 rounded-full hover:bg-yellow-50 transition-colors">
-                  <User className="h-6 w-6 text-gray-700" />
+            {isLoggedIn ? (
+              <div className="flex items-center space-x-2">
+                <Link to="/profile" className="p-2 group flex items-center">
+                  <User className="h-6 w-6 text-gray-700 group-hover:text-yellow-600 transition-colors" />
+                  <span className="hidden md:inline text-sm font-medium text-gray-700 group-hover:text-yellow-600 ml-1">{user?.email || 'Profile'}</span>
+                </Link>
+                <button
+                  onClick={async () => {
+                    await logout();
+                    navigate('/'); // Redirect to home or login after logout
+                  }}
+                  className="p-2 text-sm font-medium text-gray-700 hover:text-yellow-600 transition-colors hidden md:block"
+                >
+                  Sign Out
                 </button>
-                <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl overflow-hidden z-10 hidden group-hover:block transform transition-all duration-200 ease-out">
-                  <div className="p-2">
-                    <div className="px-4 py-3 text-sm text-gray-700 border-b border-gray-100">
-                      Signed in as <span className="font-medium text-yellow-600">{user?.name}</span>
-                    </div>
-                    <Link to="/profile" className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-yellow-50 transition-colors">
-                      <User className="h-4 w-4 mr-2" />
-                      Your Profile
-                    </Link>
-                    <Link to="/orders" className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-yellow-50 transition-colors">
-                      <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                      </svg>
-                      Your Orders
-                    </Link>
-                    {user?.role === 'admin' && (
-                      <Link to="/admin" className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-yellow-50 transition-colors">
-                        <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        Admin Dashboard
-                      </Link>
-                    )}
-                    <button 
-                      onClick={logout}
-                      className="flex items-center w-full px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors"
-                    >
-                      <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                      </svg>
-                      Sign out
-                    </button>
-                  </div>
-                </div>
               </div>
             ) : (
               <Link 
                 to="/login"
-                className="hidden md:flex items-center text-sm font-medium text-gray-800 bg-yellow-500 hover:bg-yellow-600 px-6 py-2.5 rounded-full transition-colors shadow-sm hover:shadow-md"
+                className="p-2 group flex items-center"
               >
-                Sign In
+                <User className="h-6 w-6 text-gray-700 group-hover:text-yellow-600 transition-colors" />
+                <span className="hidden md:inline text-sm font-medium text-gray-700 group-hover:text-yellow-600 ml-1">Sign In</span>
               </Link>
             )}
             {/* Mobile Menu Button */}
@@ -264,7 +235,18 @@ const Header: React.FC = () => {
                 All Products
               </Link>
               
-              {!isAuthenticated && (
+              {isLoggedIn ? (
+                <button 
+                  onClick={async () => {
+                    await logout();
+                    setIsMenuOpen(false);
+                    navigate('/');
+                  }}
+                  className="flex items-center justify-center py-3 px-4 font-medium text-gray-800 bg-yellow-500 hover:bg-yellow-600 rounded-lg transition-colors shadow-sm"
+                >
+                  Sign Out
+                </button>
+              ) : (
                 <Link 
                   to="/login" 
                   className="flex items-center justify-center py-3 px-4 font-medium text-gray-800 bg-yellow-500 hover:bg-yellow-600 rounded-lg transition-colors shadow-sm"
